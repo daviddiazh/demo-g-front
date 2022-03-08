@@ -1,0 +1,7 @@
+const actionsTypesOneProject = {
+    LOADING_SUCCESS_PROJECT: "LOADING_SUCCESS_PROJECT",
+    LOAD_SUCCESS_PROJECT: "LOAD_SUCCESS_PROJECT",
+    LOAD_FAILURE_PROJECT: "LOAD_FAILURE_PROJECT"
+}
+
+export default actionsTypesOneProject
