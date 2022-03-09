@@ -15,6 +15,8 @@ const Navbar = ({elements}) => {
     dispatch(logoutAction())
   }
 
+  console.log(state)
+
   return (
     <div>
       <nav>
@@ -37,7 +39,7 @@ const Navbar = ({elements}) => {
             })}
           </ul>
         </div>
-        { state.user 
+        { state.user?.uid
           ? <button style={{marginRight: "50px"}} className="btn btn-danger" onClick={handler}>Salir</button> 
           : null 
         }

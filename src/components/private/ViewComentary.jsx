@@ -2,9 +2,11 @@ import ReactQuill from "react-quill";
 import { useSelector } from "react-redux";
 import "../../../node_modules/react-quill/dist/quill.snow.css";
 
-const ViewComentary = () => {
+const ViewComentary = ({ deleteComentary }) => {
 
   const comentarys = useSelector(state => state.oneProject.oneProject.comentarys)
+
+  const user = useSelector(state => state.auth.user);
   
   return <div>
     {comentarys.map(comentary => {
@@ -29,9 +31,19 @@ const ViewComentary = () => {
             </div>
           </div>
 
-          <div className="mt-4  ">
+          <div className=" ">
             <ReactQuill value={comentary.comentary} modules={modules} readOnly={true} />
           </div>
+
+          {user.admin ? deleteComentary && (
+                                
+                                <button
+                                    id={comentary.id}
+                                    className="btn-danger"
+                                    onClick={() => deleteComentary(comentary.id)}>
+                                    Eliminar Comentario
+                                </button>
+          ) : null}
         </div>
       );
     })

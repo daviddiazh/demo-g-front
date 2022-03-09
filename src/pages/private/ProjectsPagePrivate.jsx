@@ -8,6 +8,8 @@ const ProjectsPagePrivate = () => {
     const {isLoading, projects, error}=useSelector(state=>state.project)
     const user = useSelector(state => state.auth.user)
 
+    console.log("projects: ", projects)
+
 
     useEffect(()=>{
       dispatch(loadAllProject())
@@ -32,7 +34,7 @@ const ProjectsPagePrivate = () => {
                 )
             })} */}
 
-            {projects && projects.filter(busqueda => busqueda.state.includes(filtro)).map((project) => {
+            {projects && projects.filter(busqueda => busqueda.userDTO.name.toUpperCase().includes(filtro)).map((project) => {
                 return(
                     <ProjectPrivate key={project.id} project={project} />
                 )

@@ -7,7 +7,7 @@ import { postUser, getUser } from "../../app/middleware/payloadProjects";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import PERFIL from "../../utils/perfil.png";
+import PERFIL from "../../media/Empresas.png";
 
 const HomePage = () => {
   const [registro, setRegistro] = useState(false);
@@ -142,14 +142,14 @@ const HomePage = () => {
             : "¿No tienes cuenta? ¡Registrate, es gratis!"}
         </button>
       </form>
-      {/* <button className="">
+      <button className="">
         <div className="">
           <img src={image} width={30} className="" />
           <span onClick={handler} className="">
             Ingresa con tu cuenta Google
           </span>
         </div>
-      </button> */}
+      </button>
 
       <ToastContainer
         position="top-right"

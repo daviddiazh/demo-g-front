@@ -3,6 +3,7 @@ import { oneProjectLoadSucces, oneProjectLoadError, oneProjectLoading } from "..
 import { myProjectsLoadSucces, myProjectsLoading, myProjectsLoadError, myProjectsDelete } from "../../actions/MyProjectsActions";
 import { loginAction } from "../../actions/AuthorActions";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 
 const urlBase = "http://localhost:8080";
@@ -68,16 +69,23 @@ export const postComentary = ( userId, projectId, data, toast ) => (dispatch) =>
 
     axios.request(options).then(function(response){
 
-        toast.success('Comentario creado con exito', {
-            position: "top-right",
-            autoClose: 2500,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-        console.log(response.data)
+        // toast.success('Comentario creado con exito', {
+        //     position: "top-right",
+        //     autoClose: 2500,
+        //     hideProgressBar: false,
+        //     closeOnClick: true,
+        //     pauseOnHover: true,
+        //     draggable: true,
+        //     progress: undefined,
+        // });
+        //console.log("modal: ",response.data)
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Felicidades...',
+            text: 'Comentario realizado con éxtio!',
+          })
+        //alert("Se envio tu respuesta.")
         dispatch(oneProjectLoadSucces(response.data))
 
     }).catch(function (error){
@@ -147,11 +155,17 @@ export const getUserProject = ( userId ) => (dispatch) => {
 
 export const postUser = (email, uid, url, name ) => async (dispatch) => {
 
+    let admin = false;
+
+    if(email === "administrador@gmail.com"){
+        admin = true;
+    }
+
     const options = {
         method: 'POST',
         url: `${urlBase}/createUser`,
         headers: { 'Content-Type': 'application/json' },
-        data: { uid: uid, email: email, pictureUrl: url, name: name }
+        data: { uid: uid, email: email, pictureUrl: url, name: name, admin: admin }
     };
 
     await axios.request(options).then(function (response){
@@ -171,7 +185,7 @@ export const getUser=(uid)=> async(dispatch)=>{
     };
     
     await axios.request(options).then(function (response) {
-      dispatch(loginAction(response.data.email, response.data.name, response.data.uid, response.data.pictureUrl));
+      dispatch(loginAction(response.data.email, response.data.name, response.data.uid, response.data.pictureUrl, response.data.admin));
     }).catch(function (error) {
       console.error(error);
     });

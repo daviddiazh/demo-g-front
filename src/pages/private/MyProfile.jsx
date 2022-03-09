@@ -12,7 +12,6 @@ const MyProfile = () => {
                 <div className="">
                   <img className="" src={user.photo} alt="Profile" width={90}/>
                   <div className="">
-                    <h1 className="">{user.uid}</h1>
                     <h1 className=""> {user.name}</h1>
                   </div>
                 </div>
