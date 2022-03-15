@@ -46,7 +46,8 @@ const ProjectsPrivate = ({project}) => {
                 modules={modules}   
                 readOnly={true}
             />
-        </div>     
+        </div>  
+
     </div>
   );
 };

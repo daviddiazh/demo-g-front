@@ -4,7 +4,7 @@ const MyProfile = () => {
 
   const user = useSelector(state => state.auth.user)
 
-  console.log(user)
+  console.log(user.photo)
 
   return (
     <div>

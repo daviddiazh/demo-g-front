@@ -7,6 +7,27 @@ const ViewComentary = ({ deleteComentary }) => {
   const comentarys = useSelector(state => state.oneProject.oneProject.comentarys)
 
   const user = useSelector(state => state.auth.user);
+
+  
+  comentarys.sort(function (a, b) {
+    if (a.fechaCreacio[0] < b.fechaCreacio[0]) {
+      return 1;
+    }
+    if (a.fechaCreacio[0] > b.fechaCreacio[0]) {
+      return -1;
+    }
+
+    if(a.fechaCreacio[0] === b.fechaCreacio[0]){
+      if(a.fechaCreacio[1] < b.fechaCreacio[1]){
+        return 1;
+      }else{
+        return -1;
+      }
+    }
+    // a must be equal to b
+    return 0;
+  });
+  console.log(comentarys)
   
   return <div>
     {comentarys.map(comentary => {
@@ -26,7 +47,7 @@ const ViewComentary = ({ deleteComentary }) => {
             <div className="">
               <span className="">Fecha de respuesta</span>
               <span className="">
-                {comentary.fechaCreacio}
+                {comentary.fechaCreacio[0]} a las {comentary.fechaCreacio[1]}
               </span>
             </div>
           </div>

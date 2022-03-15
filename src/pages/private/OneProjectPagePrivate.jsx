@@ -43,6 +43,7 @@ const OneProjectPagePrivate = () => {
             })
     }
 
+
     return (
     
         <div className="">
@@ -50,10 +51,12 @@ const OneProjectPagePrivate = () => {
             <>  
                  <OneProjectPrivate oneProject={oneProject}/>
                  <span className=""> Respuestas {oneProject.comentarys.length}</span>
-                <ViewComentary privated={true} deleteComentary={eliminarComentario}/>
+                 <ViewComentary privated={true} deleteComentary={eliminarComentario}/>
                  <FormComentary idProject={oneProject.id} setRender={setRender}></FormComentary> {/*dispatch(loadById(id, setConsulta))*/}
                  
                 {/* <ViewAnswer key={comentary.id} comentary={comentary} deleteComentary={deleteComentary}/> */}
+
+
 
             </>     
             }

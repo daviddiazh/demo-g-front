@@ -100,6 +100,7 @@ const HomePage = () => {
             name="nombre"
             placeholder="Nombre de Empresa"
             required
+            autoComplete="off"
           />
         ) : null}
 
@@ -110,6 +111,7 @@ const HomePage = () => {
           name="email"
           placeholder="Correo Electrónico"
           required
+          autoComplete="off"
         />
 
         <input
@@ -119,6 +121,7 @@ const HomePage = () => {
           name="pass"
           placeholder="Contraseña"
           required
+          autoComplete="off"
         />
 
         {registro ? (
