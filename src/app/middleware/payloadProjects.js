@@ -109,7 +109,7 @@ export const deleteComentary = (id) => (dispatch) => {
 
 }
 
-export const deleteProject = ( id, toast ) => (dispatch) => {
+export const deleteProject = ( id ) => (dispatch) => {
 
     const options = {
         method: 'DELETE',
@@ -118,16 +118,6 @@ export const deleteProject = ( id, toast ) => (dispatch) => {
 
     axios.request(options).then(function (response){
         dispatch(loadAllProject())
-
-        toast.success('Comentario eliminado con exito', {
-            position: "top-right",
-            autoClose: 2500,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
 
     }).catch(function (error){
         console.error(error);

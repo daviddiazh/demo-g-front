@@ -13,12 +13,25 @@ const FormComentary = ({ idProject, setRender }) => {
     const dispatch = useDispatch();
     const {user} = useSelector(state => state.auth);
 
+    const comentarys = useSelector(state => state.oneProject.oneProject.comentarys)
+
     const submitForm = (e) => {
-        e.preventDefault();
-        dispatch(postComentary(user.uid, idProject, data, toast))
-        setData("");
-        setRender(true)
-    }
+        //e.preventDefault();
+        //dispatch(postComentary(user.uid, idProject, data, toast))
+        //setData("");
+        //setRender(true)
+        
+        if(comentarys.lenght === 1){
+            dispatch(postComentary(user.uid, idProject, data, toast))
+            setData("");
+            setRender(true)
+        }else{
+            e.preventDefault();
+            dispatch(postComentary(user.uid, idProject, data, toast))
+            setData("");
+            setRender(true)
+        }        
+    } 
 
     return (
         <div>

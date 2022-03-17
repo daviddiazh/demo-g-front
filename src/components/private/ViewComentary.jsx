@@ -76,5 +76,5 @@ const modules = {
   toolbar: false,
 };
 
-
 export default ViewComentary;
+

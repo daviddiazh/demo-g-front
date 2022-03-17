@@ -17,27 +17,49 @@ const ProjectsPagePrivate = () => {
 
     const [ filtro, setFiltro ] = useState("");
 
+
     const eliminarProject = (id) => {
-        const Swal = require('sweetalert2')
-        Swal.fire({
-            title: '¿Estás seguro de eliminar el proyecto?',
-            text: "En caso de si, esta acción no se puede revertir en el futuro.",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Si, eliminar'
-          }).then((result) => {
-            if (result.isConfirmed) {
-                dispatch(deleteProject(id))
-                Swal.fire(
-                'Eliminado!',
-                'Tu proyecto se ha borrado correctamente.',
-                'success'
-              )
-            }
-            })
+      const Swal = require('sweetalert2')
+      Swal.fire({
+          title: '¿Estás seguro de eliminar el proyecto?',
+          text: "En caso de si, esta acción no se puede revertir en el futuro.",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6',
+          confirmButtonText: 'Si, eliminar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+              dispatch(deleteProject(id))
+              Swal.fire(
+              'Eliminado!',
+              'Tu proyecto se ha borrado correctamente.',
+              'success'
+            )
+          }
+          })
     }
+
+
+    projects?.sort(function (a, b) {
+        if (a.fechaCreacion[0] < b.fechaCreacion[0]) {
+          return 1;
+        }
+        if (a.fechaCreacion[0] > b.fechaCreacion[0]) {
+          return -1;
+        }
+    
+        if(a.fechaCreacion[0] === b.fechaCreacion[0]){
+          if(a.fechaCreacion[1] < b.fechaCreacion[1]){
+            return 1;
+          }else{
+            return -1;
+          }
+        }
+        // a must be equal to b
+        return 0;
+      });
+      console.log(projects)
   
     
     return (

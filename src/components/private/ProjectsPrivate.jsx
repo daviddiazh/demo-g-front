@@ -26,8 +26,11 @@ const ProjectsPrivate = ({project}) => {
           </span>
         </div>
 
-        <div className="">
-          <span className="">Fecha de creacion {project.fechaCreacion}</span>
+        <div>
+            <span>Fecha de creación: </span>
+            <span>{project.fechaCreacion[0]}</span>
+            <span> A las </span>
+            <span>{project.fechaCreacion[1]}</span>
         </div>
         <div>
           <span>Estado del proyecto: {project.state}</span>
